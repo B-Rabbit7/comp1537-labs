@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+
+        </script>
+
+        <script src="./scripts/code.js"></script>
+        <style>
+            .sub {
+                background-color: aqua;
+            }
+            .add {
+                background-color: beige;
+            }
+            .mul {
+                background-color: bisque;
+            }
+            .div {
+                background-color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <label for=""x> First Operand</label>
+        <input type="text" id="x">
+        <br>
+        <label for=""y>Second Operand</label>
+        <input type="text" id="y">
+        
+        <!-- <input type="submit" id="calc"> -->
+        <br>
+
+        <input type="submit" value="+" id="add">
+        <input type="submit" value="-" id="sub">
+        <input type="submit" value="*" id="multiply">
+        <input type="submit" value="/" id="divide">
+        <p>Result: <span id="answer"></span></p>
+        <h2>History</h2>
+        <div id="history"></div>
+    
+
+    </body>
+
+</html>
