@@ -1,6 +1,6 @@
 function calculate_area() {
-    r = parseInt($("#x").val()) ;
-    $("#p1").html(r * r * 22/7)
+    radius = parseInt($("#radius").val()) ;
+    $("#p").html(radius * radius * 22/7)
 
 }
 
