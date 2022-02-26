@@ -38,11 +38,27 @@ function divide(){
     old = f + ' / ' + s + ' = ' + (f/s);
     $("#history").append('<span class = "div">' + old + '</span><br>');
 }
+function IncreaseFont(){
+    f = parseInt($("#history").css("font-size"));
+    a = $("#history")
+    f = f+  10 + 'px'
+    a.css({"font-size": f})
+}
+
+function DecreaseFont(){
+    f = parseInt($("#history").css("font-size"));
+    a = $("#history")
+    f = f- 10 + 'px'
+    a.css({"font-size": f})
+}
+
 
 function setup() {
     $("#add").click(add);
     $("#sub").click(sub);
     $("#multiply").click(multiply);
     $("#divide").click(divide);
+    $("#F-up").click(IncreaseFont)
+    $("#F-down").click(DecreaseFont)
 }
 jQuery(document).ready(setup);
