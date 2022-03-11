@@ -1,11 +1,13 @@
 function success_data(data) {
     for (let i = 0; i < data.results.length; i++) {
         console.log(data);
-        $("#container").append(data.results[i].original_title + '<br>');
-        $("#container").append(data.results[i].overview + '<br>');
+        x = data.results[i].original_title + '<br>';
+        y = data.results[i].overview + '<br>';
         image = data.results[i].poster_path;
-        y = `<img src="http://image.tmdb.org/t/p/w500/${image}">`
-        $("#container").append(y)
+        z = `<img src="http://image.tmdb.org/t/p/w500/${image}">`
+        h = `<input type="submit" class= "expand" id=${data.results[i].backdrop_path} value="View Poster"></input>`
+        $("#main").append('<ol><li>' + x + y + z +  '</li></ol>'+ h + '<hr>')
+
     }
 }
 
@@ -20,8 +22,13 @@ function get_movie_data() {
     })
 }
 
+function expand(){
+    g = $(this).attr("id");
+    $("#expand").html(`<img src="https://image.tmdb.org/t/p/original${g}" width = "400%">`)
+}
 
 function setup() {
     $("#searchmovie").click(get_movie_data);
+    $('body').on("click", ".expand", expand);
 }
 $(document).ready(setup)
