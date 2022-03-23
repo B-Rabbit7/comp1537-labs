@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="code.js"></script>
+  <title>Movie App</title>
+</head>
+
+<body>
+  <header>
+    <button id="first">first</button>
+    <button id="prev">prev</button>
+    <div id="page_buttons">
+
+    </div>
+    <button id="next">next</button>
+    <button id="last">last</button>
+  </header>
+  <br>
+  List Size
+  <select name="page_size" id="page_size">
+    <option value="3">3</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+  </select><br>
+  Enter Movie Name:<input type="text" id="movie_name" value="">
+
+  <input type="submit" id="searchmovie" value="Search Movie">
+  <br>
+  <article style="float: left; width: 40%; border:solid; border-color: black;">
+    <div id="main">
+      <!-- <ol id="container"></ol> -->
+    </div>
+
+  </article>
+
+  <article style="float: left; width: 50%;">
+    <div id="expand" style="float:left; width: 50%;">
+
+    </div>
+  </article>
+
+  <div id="result">
+
+  </div>
+
+
+
+</body>
+
+</html>
