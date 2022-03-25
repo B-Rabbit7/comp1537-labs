@@ -1,5 +1,8 @@
 current_page_id = null;
 results_array = null;
+max_page = null;
+page_size = null;
+
 
 // function success_data(data) {
 //     console.log(data);
@@ -27,12 +30,15 @@ results_array = null;
 //     starting_index = page_size * (max_page_id - 1)
 //     console.log(starting_index)
 
-// }
+// 
+function display(current_page_id, page_size){
+
+}
 function paginate_buttons(){
     $("#page_buttons").empty();
     console.log("results array: " + results_array);
-    last_page = Math.ceil(results_array.results.length / 3);
-    for(i=1; i<= last_page; i++){
+    max_page = Math.ceil(results_array.results.length / page_size);
+    for(i=1; i<= max_page; i++){
         x = `<button id = "${i}" class = "numbered">${i}</button>`
         $("#page_buttons").append(x)
     }
@@ -72,41 +78,43 @@ function expand(){
     console.log("this is g:"+ g)
     $("#expand").html(`<img src="https://image.tmdb.org/t/p/original${g}" width = "400%">`)
 }
-
-function page_size_change(){
-    console.log($(this).val());
-}
 function test(){
     x = $(this).attr("id")
-    $("#result").html(`<h1> Display(${x}, page size)</h1>`)
+    $("#result").html(`<h1> Display(${x}, ${page_size})</h1>`)
     current_page_id = Number(x);
     $("#prev").show();
     $("#next").show();
 }
 
 function first(){
-    $("#result").html(`<h1> Display(1, page size)</h1>`)
+    $("#result").html(`<h1> Display(1, ${page_size})</h1>`)
 }
 function last(){
-    $("#result").html(`<h1> Display(7, page size)</h1>`)
+    $("#result").html(`<h1> Display(7, ${page_size})</h1>`)
 }
 function prev(){
     if(current_page_id > 1)
         current_page_id--;
-        $("#result").html(`<h1> Display(${current_page_id}, page size) </h1>`);
+        $("#result").html(`<h1> Display(${current_page_id}, ${page_size}) </h1>`);
+
 }
 
 function next(){
     if(current_page_id < 7)
         current_page_id++;
-        $("#result").html(`<h1> Display(${current_page_id}, page size) </h1>`);
+    $("#result").html(`<h1> Display(${current_page_id}, ${page_size}) </h1>`);
+    display(current_page_id, page_size);   
+}
+function page_size_changed(){
+    page_size  = Number($(this).val())
+    paginate_buttons();
 }
 
 function setup() {
     $("#searchmovie").click(get_movie_data);
     $('body').on("click", ".expand", expand);
-    console.log($('#page_size').val());
-    $('#page_size').change(page_size_change);
+    // console.log($('#page_size').val());
+    // $('#page_size').change(page_size_change);
     $('body').on("click", ".numbered", test)
     $("#first").click(first);
     $("#last").click(last);
@@ -118,6 +126,10 @@ function setup() {
     $("#prev").hide();
     $("#next").hide();
     $("#page_buttons").hide();
+
+    // making the page change dynamic
+    $("select").change(page_size_changed);
+    page_size = Number($("option:selected").val());
 
 }
 $(document).ready(setup)
